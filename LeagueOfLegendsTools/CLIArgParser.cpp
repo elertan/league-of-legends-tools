@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CLIArgParser.h"
+#include <algorithm>
 
 void split(const string& s, char delim, vector<string>& v) {
 	auto i = 0;
@@ -27,6 +28,7 @@ vector<string> CLIArgParser::parse(string all_arguments)
 			removeLines.push_back(line);
 			continue;
 		}
+		line.erase(std::remove(line.begin(), line.end(), '"'), line.end());
 		cout << "Arg line: " << line << endl;
 	}
 
@@ -34,6 +36,8 @@ vector<string> CLIArgParser::parse(string all_arguments)
 		const auto index = std::find(lines.begin(), lines.end(), line);
 		lines.erase(index);
 	}
+
+
 
 	return args;
 }
