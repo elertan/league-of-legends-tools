@@ -32,6 +32,7 @@ void Program::main()
 	CLIArgParser parser;
 	const auto args = parser.parse(GetCommandLineA());
 	const auto game_id = parser.getOption(args, "-GameID");
+	cout << "Game ID: " << game_id << endl;
 
 	this->_hookManager.hook_WSASendTo(WSASendToDetourFn);
 }

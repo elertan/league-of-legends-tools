@@ -28,7 +28,6 @@ vector<string> CLIArgParser::parse(string all_arguments)
 			removeLines.push_back(line);
 			continue;
 		}
-		line.erase(std::remove(line.begin(), line.end(), '"'), line.end());
 		cout << "Arg line: " << line << endl;
 	}
 
@@ -37,12 +36,20 @@ vector<string> CLIArgParser::parse(string all_arguments)
 		lines.erase(index);
 	}
 
-
-
 	return args;
 }
 
 string CLIArgParser::getOption(vector<string> argument_lines, string option_name)
 {
+	for (auto line : argument_lines) {
+		if (line.find(option_name) == string::npos) {
+			continue;
+		}
+
+		const auto value_start_index = line.find('=') + 1;
+		//const auto value_end_index = line.find_last_of('"');
+		return line.substr(value_start_index, line.length - 1);
+	}
+
 	return string();
 }
