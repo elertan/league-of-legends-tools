@@ -49,6 +49,7 @@ string CLIArgParser::getOption(vector<string> argument_lines, string option_name
 		const auto value_start_index = line.find('=') + 1;
 		const auto distance = strlen(line.c_str()) - value_start_index - 1;
 
+
 		cout << value_start_index << " - " << distance << endl;
 		return line.substr(value_start_index, distance);
 	}
