@@ -17,8 +17,6 @@ void split(const string& s, char delim, vector<string>& v) {
 
 vector<string> CLIArgParser::parse(string all_arguments)
 {
-	auto args = vector<string>();
-
 	auto lines = vector<string>();
 	split(all_arguments, ' ', lines);
 	auto removeLines = vector<string>();
@@ -35,11 +33,7 @@ vector<string> CLIArgParser::parse(string all_arguments)
 		lines.erase(index);
 	}
 
-	for (auto line : lines) {
-		cout << line << endl;
-	}
-
-	return args;
+	return lines;
 }
 
 string CLIArgParser::getOption(vector<string> argument_lines, string option_name)
