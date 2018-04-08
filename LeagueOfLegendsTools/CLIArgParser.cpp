@@ -48,7 +48,7 @@ string CLIArgParser::getOption(vector<string> argument_lines, string option_name
 
 		const auto value_start_index = line.find('=') + 1;
 		//const auto value_end_index = line.find_last_of('"');
-		return line.substr(value_start_index, line.length - 1);
+		return line.substr(value_start_index, strlen(line.c_str()) - 1);
 	}
 
 	return string();
