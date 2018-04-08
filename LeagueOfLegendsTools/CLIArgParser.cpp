@@ -35,6 +35,10 @@ vector<string> CLIArgParser::parse(string all_arguments)
 		lines.erase(index);
 	}
 
+	for (auto line : lines) {
+		cout << line << endl;
+	}
+
 	return args;
 }
 
