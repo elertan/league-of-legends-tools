@@ -20,9 +20,19 @@ vector<string> CLIArgParser::parse(string all_arguments)
 
 	auto lines = vector<string>();
 	split(all_arguments, ' ', lines);
+	auto removeLines = vector<string>();
 
 	for (auto line : lines) {
+		if (line.find('-') == string::npos) {
+			removeLines.push_back(line);
+			continue;
+		}
 		cout << "Arg line: " << line << endl;
+	}
+
+	for (auto line : removeLines) {
+		const auto index = std::find(lines.begin(), lines.end(), line);
+		lines.erase(index);
 	}
 
 	return args;
