@@ -28,7 +28,6 @@ vector<string> CLIArgParser::parse(string all_arguments)
 			removeLines.push_back(line);
 			continue;
 		}
-		cout << "Arg line: " << line << endl;
 	}
 
 	for (auto line : removeLines) {

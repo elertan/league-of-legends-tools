@@ -31,6 +31,10 @@ void Program::main()
 
 	CLIArgParser parser;
 	const auto args = parser.parse(GetCommandLineA());
+	cout << "Using command line arguments:" << endl;
+	for (auto line : args) {
+		cout << line << endl;
+	}
 	const auto game_id = parser.getOption(args, "-GameID");
 	cout << "Game ID: " << game_id << endl;
 
